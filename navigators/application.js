@@ -9,8 +9,34 @@ import YouScreen from "../screens/you";
 
 const Tab = createBottomTabNavigator();
 
-function HomeTabBarIcon({ focused, color, size }) {
-  return <Icon name={"home-outline"} size={size} color={color} />;
+function TabBarIcon({ icon, focused, color, size }) {
+  return (
+    <Icon
+      name={`${icon}${focused ? "" : "-outline"}`}
+      size={size}
+      color={color}
+    />
+  );
+}
+
+function HomeTabBarIcon(props) {
+  return <TabBarIcon icon="home" {...props} />;
+}
+
+function DirectMessagesTabBarIcon(props) {
+  return <TabBarIcon icon="chatbubbles" {...props} />;
+}
+
+function MentionsTabBarIcon(props) {
+  return <TabBarIcon icon="at" {...props} />;
+}
+
+function SearchTabBarIcon(props) {
+  return <TabBarIcon icon="search" {...props} />;
+}
+
+function YouTabBarIcon(props) {
+  return <TabBarIcon icon="person-circle" {...props} />;
 }
 
 function Application() {
@@ -23,10 +49,34 @@ function Application() {
           tabBarIcon: HomeTabBarIcon
         }}
       />
-      <Tab.Screen name="DMs" component={DirectMessagesScreen} />
-      <Tab.Screen name="Mentions" component={MentionsScreen} />
-      <Tab.Screen name="Search" component={SearchScreen} />
-      <Tab.Screen name="You" component={YouScreen} />
+      <Tab.Screen
+        name="DMs"
+        component={DirectMessagesScreen}
+        options={{
+          tabBarIcon: DirectMessagesTabBarIcon
+        }}
+      />
+      <Tab.Screen
+        name="Mentions"
+        component={MentionsScreen}
+        options={{
+          tabBarIcon: MentionsTabBarIcon
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{
+          tabBarIcon: SearchTabBarIcon
+        }}
+      />
+      <Tab.Screen
+        name="You"
+        component={YouScreen}
+        options={{
+          tabBarIcon: YouTabBarIcon
+        }}
+      />
     </Tab.Navigator>
   );
 }
