@@ -39,6 +39,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RestyleSlack/main.m; sourceTree = "<group>"; };
 		1ADE35174C301F218799924D /* libPods-RestyleSlack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RestyleSlack.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D8F629506ADAC3D9036F8A4 /* libPods-RestyleSlack-RestyleSlackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RestyleSlack-RestyleSlackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81777B1827CD57E200863C76 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RestyleSlack/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98739904B8E146D6F7B7392B /* Pods-RestyleSlack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestyleSlack.debug.xcconfig"; path = "Target Support Files/Pods-RestyleSlack/Pods-RestyleSlack.debug.xcconfig"; sourceTree = "<group>"; };
 		B575EA93BADF1347CB2DED6B /* Pods-RestyleSlack-RestyleSlackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestyleSlack-RestyleSlackTests.release.xcconfig"; path = "Target Support Files/Pods-RestyleSlack-RestyleSlackTests/Pods-RestyleSlack-RestyleSlackTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +87,7 @@
 		13B07FAE1A68108700A75B9A /* RestyleSlack */ = {
 			isa = PBXGroup;
 			children = (
+				81777B1727CD57AA00863C76 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -104,6 +106,14 @@
 				5D8F629506ADAC3D9036F8A4 /* libPods-RestyleSlack-RestyleSlackTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		81777B1727CD57AA00863C76 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				81777B1827CD57E200863C76 /* Ionicons.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -145,7 +155,6 @@
 				08BA747E3B5FB36487A3D350 /* Pods-RestyleSlack-RestyleSlackTests.debug.xcconfig */,
 				B575EA93BADF1347CB2DED6B /* Pods-RestyleSlack-RestyleSlackTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

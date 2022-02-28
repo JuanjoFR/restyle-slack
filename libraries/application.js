@@ -1,11 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import { Text } from "react-native";
+import ApplicationNavigator from "../navigators/application";
 
 function Application() {
   return (
     <NavigationContainer>
-      <Text>hello world</Text>
+      <ApplicationNavigator />
     </NavigationContainer>
   );
 }
