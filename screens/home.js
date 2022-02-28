@@ -1,8 +1,8 @@
 import React from "react";
-import { Text } from "react-native";
+import Text from "../style-system/text";
 
 function Home() {
-  return <Text>Home</Text>;
+  return <Text variant="header">Home</Text>;
 }
 
 export default Home;

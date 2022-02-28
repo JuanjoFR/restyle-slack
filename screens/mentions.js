@@ -1,8 +1,8 @@
 import React from "react";
-import { Text } from "react-native";
+import Text from "../style-system/text";
 
 function Mentions() {
-  return <Text>Mentions</Text>;
+  return <Text variant="header">Mentions</Text>;
 }
 
 export default Mentions;

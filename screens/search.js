@@ -1,8 +1,8 @@
 import React from "react";
-import { Text } from "react-native";
+import Text from "../style-system/text";
 
 function Search() {
-  return <Text>Search</Text>;
+  return <Text variant="header">Search</Text>;
 }
 
 export default Search;
