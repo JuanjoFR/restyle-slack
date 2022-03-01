@@ -9,15 +9,20 @@ const palette = {
   greenPrimary: "#0ECD9D",
   greenDark: "#0A906E",
 
-  black: "#0B0B0B",
-  white: "#F0F2F3"
+  primary: "#350D37",
+  text: "#868686",
+  black: "#1C1C1C",
+  white: "#FFF"
 };
 const theme = createTheme({
   colors: {
     mainBackground: palette.white,
     mainForeground: palette.black,
+    headerBackground: palette.primary,
     cardPrimaryBackground: palette.purplePrimary,
-    buttonPrimaryBackground: palette.purplePrimary
+    buttonPrimaryBackground: palette.purplePrimary,
+    tabBarActiveTint: palette.black,
+    tabBarInactiveTint: palette.text
   },
   spacing: {
     s: 8,
@@ -30,22 +35,29 @@ const theme = createTheme({
     tablet: 768
   },
   textVariants: {
+    screenHeader: {
+      fontFamily: "System",
+      fontWeight: "bold",
+      fontSize: 22,
+      lineHeight: 26,
+      color: "mainBackground"
+    },
     header: {
-      // fontFamily: 'ShopifySans-Bold',
+      fontFamily: "System",
       fontWeight: "bold",
       fontSize: 34,
       lineHeight: 42.5,
       color: "mainForeground"
     },
     subheader: {
-      // fontFamily: 'ShopifySans-SemiBold',
+      fontFamily: "System",
       fontWeight: "600",
       fontSize: 28,
       lineHeight: 36,
       color: "mainForeground"
     },
     body: {
-      // fontFamily: 'ShopifySans',
+      fontFamily: "System",
       fontSize: 16,
       lineHeight: 24,
       color: "mainForeground"
