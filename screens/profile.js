@@ -11,11 +11,11 @@ const styles = StyleSheet.create({
 });
 
 /**
- * Renders the direct messages screen.
+ * Renders the profile screen.
  *
  * @returns {object} Component JSX.
  */
-function DirectMessages() {
+function Profile() {
   const theme = useTheme();
 
   return (
@@ -30,10 +30,10 @@ function DirectMessages() {
     >
       <StatusBar barStyle="light-content" />
       <ScrollView>
-        <Text variant="header">Direct messages</Text>
+        <Text variant="header">Profile</Text>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-export default DirectMessages;
+export default Profile;

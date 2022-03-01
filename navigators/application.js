@@ -2,11 +2,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useTheme } from "@shopify/restyle";
 import React from "react";
 import Icon from "react-native-vector-icons/Ionicons";
-import DirectMessagesScreen from "../screens/direct-messages";
 import HomeScreen from "../screens/home";
 import MentionsScreen from "../screens/mentions";
+import MessagesScreen from "../screens/messages";
+import ProfileScreen from "../screens/profile";
 import SearchScreen from "../screens/search";
-import YouScreen from "../screens/you";
 import Text from "../style-system/text";
 
 const Tab = createBottomTabNavigator();
@@ -42,12 +42,12 @@ function HomeTabBarIcon(props) {
 }
 
 /**
- * Renders the direct messages bottom tab bar icon.
+ * Renders the messages bottom tab bar icon.
  *
  * @param {object} props Component properties.
  * @returns {object} Component JSX.
  */
-function DirectMessagesTabBarIcon(props) {
+function MessagesTabBarIcon(props) {
   return <TabBarIcon icon="chatbubbles" {...props} />;
 }
 
@@ -77,7 +77,7 @@ function SearchTabBarIcon(props) {
  * @param {object} props Component properties.
  * @returns {object} Component JSX.
  */
-function YouTabBarIcon(props) {
+function ProfileTabBarIcon(props) {
   return <TabBarIcon icon="person-circle" {...props} />;
 }
 
@@ -112,43 +112,54 @@ function Application() {
           backgroundColor: theme.colors.headerBackground
         },
         headerTitle: HeaderTitle,
+        headerTitleAlign: "left",
         tabBarActiveTintColor: theme.colors.tabBarActiveTint,
         tabBarInactiveTintColor: theme.colors.tabBarInactiveTint
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="home"
         component={HomeScreen}
         options={{
-          tabBarIcon: HomeTabBarIcon
+          title: "Human After All Studio",
+          tabBarIcon: HomeTabBarIcon,
+          tabBarLabel: "Home"
         }}
       />
       <Tab.Screen
-        name="DMs"
-        component={DirectMessagesScreen}
+        name="messages"
+        component={MessagesScreen}
         options={{
-          tabBarIcon: DirectMessagesTabBarIcon
+          title: "Direct Messages",
+          tabBarIcon: MessagesTabBarIcon,
+          tabBarLabel: "DMs"
         }}
       />
       <Tab.Screen
-        name="Mentions"
+        name="mentions"
         component={MentionsScreen}
         options={{
-          tabBarIcon: MentionsTabBarIcon
+          title: "Mentions & Reactions",
+          tabBarIcon: MentionsTabBarIcon,
+          tabBarLabel: "Mentions"
         }}
       />
       <Tab.Screen
-        name="Search"
+        name="search"
         component={SearchScreen}
         options={{
-          tabBarIcon: SearchTabBarIcon
+          title: "Search",
+          tabBarIcon: SearchTabBarIcon,
+          tabBarLabel: "Search"
         }}
       />
       <Tab.Screen
-        name="You"
-        component={YouScreen}
+        name="profile"
+        component={ProfileScreen}
         options={{
-          tabBarIcon: YouTabBarIcon
+          title: "You",
+          tabBarIcon: ProfileTabBarIcon,
+          tabBarLabel: "You"
         }}
       />
     </Tab.Navigator>

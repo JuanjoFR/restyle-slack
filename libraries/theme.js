@@ -12,7 +12,9 @@ const palette = {
   primary: "#350D37",
   text: "#868686",
   black: "#1C1C1C",
-  white: "#FFF"
+  white: "#FFF",
+  gray1: "#DDDDDD",
+  gray2: "#606060"
 };
 const theme = createTheme({
   colors: {
@@ -22,7 +24,10 @@ const theme = createTheme({
     cardPrimaryBackground: palette.purplePrimary,
     buttonPrimaryBackground: palette.purplePrimary,
     tabBarActiveTint: palette.black,
-    tabBarInactiveTint: palette.text
+    tabBarInactiveTint: palette.text,
+    inputBorder: palette.gray1,
+    inputPress: palette.gray1,
+    placeholderText: palette.gray2
   },
   spacing: {
     s: 8,

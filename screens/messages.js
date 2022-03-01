@@ -11,11 +11,11 @@ const styles = StyleSheet.create({
 });
 
 /**
- * Renders the profile screen.
+ * Renders the messages screen.
  *
  * @returns {object} Component JSX.
  */
-function You() {
+function Messages() {
   const theme = useTheme();
 
   return (
@@ -30,10 +30,10 @@ function You() {
     >
       <StatusBar barStyle="light-content" />
       <ScrollView>
-        <Text variant="header">You</Text>
+        <Text variant="header">Messages</Text>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-export default You;
+export default Messages;
