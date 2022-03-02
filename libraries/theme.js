@@ -28,6 +28,7 @@ const theme = createTheme({
     tabBarActiveTint: palette.black,
     tabBarInactiveTint: palette.gray3,
     inputBorder: palette.gray1,
+    listItemPress: palette.gray1,
     inputPress: palette.gray1,
     placeholderText: palette.gray2,
     separator: palette.gray1

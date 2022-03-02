@@ -6,7 +6,9 @@ import Box from "./box";
 import Text from "./text";
 
 const styles = StyleSheet.create({
-  textPressable: { flex: 1 }
+  textPressable: { flex: 1 },
+  iconUnpressed: { opacity: 1 },
+  iconPressed: { opacity: 0.4 }
 });
 
 /**
@@ -28,21 +30,49 @@ function ListTitle({ text, onTitlePress, onAddPress }) {
       // backgroundColor="cardPrimaryBackground"
     >
       <Pressable onPress={onTitlePress} style={styles.textPressable}>
-        <Box paddingTop="s" paddingBottom="m" paddingLeft="m" paddingRight="s">
-          <Text variant="header">{text}</Text>
-        </Box>
+        {({ pressed }) => (
+          <Box
+            paddingTop="s"
+            paddingBottom="m"
+            paddingLeft="m"
+            paddingRight="s"
+          >
+            <Text variant="header" opacity={pressed ? 0.4 : 1}>
+              {text}
+            </Text>
+          </Box>
+        )}
       </Pressable>
       {onAddPress ? (
         <Pressable onPress={onAddPress}>
-          <Box paddingTop="s" paddingBottom="m" paddingHorizontal="s">
-            <Icon name="add-outline" size={20} color={theme.colors.text} />
-          </Box>
+          {({ pressed }) => (
+            <Box paddingTop="s" paddingBottom="m" paddingHorizontal="s">
+              <Icon
+                name="add-outline"
+                size={20}
+                color={theme.colors.text}
+                style={pressed ? styles.iconPressed : styles.iconUnpressed}
+              />
+            </Box>
+          )}
         </Pressable>
       ) : undefined}
       <Pressable onPress={onTitlePress}>
-        <Box paddingTop="s" paddingBottom="m" paddingLeft="s" paddingRight="m">
-          <Icon name="chevron-up-outline" size={20} color={theme.colors.text} />
-        </Box>
+        {({ pressed }) => (
+          <Box
+            paddingTop="s"
+            paddingBottom="m"
+            paddingLeft="s"
+            paddingRight="m"
+          >
+            <Icon
+              name="chevron-up-outline"
+              size={20}
+              color={theme.colors.text}
+              style={pressed ? styles.iconPressed : styles.iconUnpressed}
+            />
+          </Box>
+        )}
       </Pressable>
     </Box>
   );
