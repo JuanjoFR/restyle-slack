@@ -10,24 +10,27 @@ const palette = {
   greenDark: "#0A906E",
 
   primary: "#350D37",
-  text: "#868686",
   black: "#1C1C1C",
   white: "#FFF",
   gray1: "#DDDDDD",
-  gray2: "#606060"
+  gray2: "#606060",
+  gray3: "#868686",
+  gray4: "#616061"
 };
 const theme = createTheme({
   colors: {
     mainBackground: palette.white,
     mainForeground: palette.black,
+    text: palette.gray4,
     headerBackground: palette.primary,
     cardPrimaryBackground: palette.purplePrimary,
     buttonPrimaryBackground: palette.purplePrimary,
     tabBarActiveTint: palette.black,
-    tabBarInactiveTint: palette.text,
+    tabBarInactiveTint: palette.gray3,
     inputBorder: palette.gray1,
     inputPress: palette.gray1,
-    placeholderText: palette.gray2
+    placeholderText: palette.gray2,
+    separator: palette.gray1
   },
   spacing: {
     s: 8,
@@ -50,8 +53,8 @@ const theme = createTheme({
     header: {
       fontFamily: "System",
       fontWeight: "bold",
-      fontSize: 34,
-      lineHeight: 42.5,
+      fontSize: 16,
+      lineHeight: 24,
       color: "mainForeground"
     },
     subheader: {
@@ -65,7 +68,7 @@ const theme = createTheme({
       fontFamily: "System",
       fontSize: 16,
       lineHeight: 24,
-      color: "mainForeground"
+      color: "text"
     }
   }
 });

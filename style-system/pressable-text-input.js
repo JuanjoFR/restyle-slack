@@ -18,7 +18,8 @@ function PressableTextInput({ text, pressableStyle, containerStyle, onPress }) {
     <Pressable onPress={onPress} style={pressableStyle}>
       {({ pressed }) => (
         <Box
-          padding="m"
+          paddingHorizontal="m"
+          paddingVertical="s"
           borderWidth={1}
           borderColor="inputBorder"
           borderRadius={8}

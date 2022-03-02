@@ -2,8 +2,10 @@ import { useTheme } from "@shopify/restyle";
 import React from "react";
 import { ScrollView, StatusBar, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import HotChannelsList from "../features/channels/hot-channels-list";
+import ListItem from "../style-system/list-item";
 import PressableTextInput from "../style-system/pressable-text-input";
-import Text from "../style-system/text";
+import Separator from "../style-system/separator";
 
 const styles = StyleSheet.create({
   container: {
@@ -35,6 +37,29 @@ function Home() {
     console.log("TODO go to shortcuts screen");
   }
 
+  /**
+   * Go to the channel screen.
+   *
+   * @param {string} id Channel identifier.
+   */
+  function handleChannelPress(id) {
+    console.log(`TODO handle channel ${id} press`);
+  }
+
+  /**
+   * Go to the new channel screen.
+   */
+  function handleAddChannelPress() {
+    console.log("TODO handle add channel press");
+  }
+
+  /**
+   * Go to the threads screen.
+   */
+  function handleThreadsPress() {
+    console.log("TODO handle threads press");
+  }
+
   return (
     <SafeAreaView
       edges={["right", "left"]}
@@ -60,10 +85,20 @@ function Home() {
       />
       <ScrollView
         contentContainerStyle={{
-          paddingTop: theme.spacing.m * 4 + theme.textVariants.body.lineHeight
+          paddingTop: theme.spacing.m * 3 + theme.textVariants.body.lineHeight
         }}
       >
-        <Text variant="header">Home</Text>
+        <ListItem
+          iconName="chatbubble-ellipses-outline"
+          text="Threads"
+          onPress={() => handleThreadsPress()}
+          style={{ marginVertical: theme.spacing.s }}
+        />
+        <Separator />
+        <HotChannelsList
+          onChannelPress={handleChannelPress}
+          onAddChannelPress={handleAddChannelPress}
+        />
       </ScrollView>
     </SafeAreaView>
   );
