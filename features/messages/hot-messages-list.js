@@ -1,6 +1,6 @@
 import { useTheme } from "@shopify/restyle";
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Alert, Image, StyleSheet, View } from "react-native";
 import ListItem from "../../style-system/list-item";
 import ListTitle from "../../style-system/list-title";
 import { getMessages } from "./data";
@@ -28,7 +28,7 @@ function HotMessagesList({ style, onMessagePress, onAddMessagePress }) {
    * Toggle the list.
    */
   function handleTitlePress() {
-    console.log("TODO handle title press");
+    Alert.alert("Handle title press");
   }
 
   return (

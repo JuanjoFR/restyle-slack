@@ -1,6 +1,6 @@
 import { useTheme } from "@shopify/restyle";
 import React from "react";
-import { ScrollView, StatusBar, StyleSheet } from "react-native";
+import { Alert, ScrollView, StatusBar, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/Ionicons";
 import HotChannelsList from "../features/channels/hot-channels-list";
@@ -36,14 +36,14 @@ function Home() {
    * Go to the shortcuts screen.
    */
   function handleShortcutsPress() {
-    console.log("TODO go to shortcuts screen");
+    Alert.alert("Go to shortcuts screen");
   }
 
   /**
    * Go to the threads screen.
    */
   function handleThreadsPress() {
-    console.log("TODO handle threads press");
+    Alert.alert("Handle threads press");
   }
 
   /**
@@ -52,21 +52,21 @@ function Home() {
    * @param {string} id Channel identifier.
    */
   function handleChannelPress(id) {
-    console.log(`TODO handle channel ${id} press`);
+    Alert.alert(`Handle channel ${id} press`);
   }
 
   /**
    * Go to the new channel screen.
    */
   function handleAddChannelPress() {
-    console.log("TODO handle add channel press");
+    Alert.alert("Handle add channel press");
   }
 
   /**
    * Go to the new teammates screen.
    */
   function handleAddTeammatesPress() {
-    console.log("TODO handle add teammates press");
+    Alert.alert("Handle add teammates press");
   }
 
   /**
@@ -75,14 +75,14 @@ function Home() {
    * @param {string} id Message identifier.
    */
   function handleMessagePress(id) {
-    console.log(`TODO handle message ${id} press`);
+    Alert.alert(`Handle message ${id} press`);
   }
 
   /**
    * Go to the new message screen.
    */
   function handleAddMessagePress() {
-    console.log("TODO handle add message press");
+    Alert.alert("Handle add message press");
   }
 
   return (

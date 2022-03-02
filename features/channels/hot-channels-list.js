@@ -1,6 +1,6 @@
 import { useTheme } from "@shopify/restyle";
 import React from "react";
-import { View } from "react-native";
+import { Alert, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import ListItem from "../../style-system/list-item";
 import ListTitle from "../../style-system/list-title";
@@ -24,7 +24,7 @@ function HotChannelsList({ style, onChannelPress, onAddChannelPress }) {
    * Toggle the list.
    */
   function handleTitlePress() {
-    console.log("TODO handle title press");
+    Alert.alert("Handle title press");
   }
 
   return (
