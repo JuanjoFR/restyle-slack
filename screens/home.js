@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/Ionicons";
 import HotChannelsList from "../features/channels/hot-channels-list";
 import HotMessagesList from "../features/messages/hot-messages-list";
+import FloatingNewMessageButton from "../style-system/floating-new-message-button";
 import ListItem from "../style-system/list-item";
 import PressableTextInput from "../style-system/pressable-text-input";
 import Separator from "../style-system/separator";
@@ -79,10 +80,17 @@ function Home() {
   }
 
   /**
+   * Go to the new direct message screen.
+   */
+  function handleAddDirectMessagePress() {
+    Alert.alert("Handle add direct message press");
+  }
+
+  /**
    * Go to the new message screen.
    */
-  function handleAddMessagePress() {
-    Alert.alert("Handle add message press");
+  function handleNewMessagePress() {
+    Alert.alert("Handle new message press");
   }
 
   return (
@@ -135,7 +143,7 @@ function Home() {
         <Separator />
         <HotMessagesList
           onMessagePress={handleMessagePress}
-          onAddMessagePress={handleAddMessagePress}
+          onAddMessagePress={handleAddDirectMessagePress}
           style={{ marginBottom: theme.spacing.s }}
         />
         <Separator />
@@ -153,6 +161,10 @@ function Home() {
           style={{ marginBottom: theme.spacing.s }}
         />
       </ScrollView>
+      <FloatingNewMessageButton
+        style={{ bottom: theme.spacing.m, right: theme.spacing.m }}
+        onPress={handleNewMessagePress}
+      />
     </SafeAreaView>
   );
 }
