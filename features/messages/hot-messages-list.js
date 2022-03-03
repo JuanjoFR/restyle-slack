@@ -40,6 +40,7 @@ function HotMessagesList({ style, onMessagePress, onAddMessagePress }) {
       />
       {hotMessages.map((message) => (
         <ListItem
+          variant="regular"
           key={message.id}
           leftComponent={
             <Image

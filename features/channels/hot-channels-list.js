@@ -32,6 +32,7 @@ function HotChannelsList({ style, onChannelPress, onAddChannelPress }) {
       <ListTitle text="Channels" onTitlePress={handleTitlePress} />
       {hotChannels.map((channel) => (
         <ListItem
+          variant="regular"
           key={channel.id}
           leftComponent={
             <Icon
@@ -46,6 +47,7 @@ function HotChannelsList({ style, onChannelPress, onAddChannelPress }) {
         />
       ))}
       <ListItem
+        variant="regular"
         leftComponent={
           <Icon
             name="add-outline"

@@ -90,7 +90,7 @@ function Home() {
    * Go to the new message screen.
    */
   function handleNewMessagePress() {
-    Alert.alert("Handle new message press");
+    Alert.alert("Go to new message screen");
   }
 
   return (
@@ -122,6 +122,7 @@ function Home() {
         }}
       >
         <ListItem
+          variant="regular"
           leftComponent={
             <Icon
               name="chatbubble-ellipses-outline"
@@ -132,7 +133,7 @@ function Home() {
           }
           text="Threads"
           onPress={() => handleThreadsPress()}
-          style={{ marginBottom: theme.spacing.s }}
+          marginBottom="s"
         />
         <Separator />
         <HotChannelsList
@@ -148,6 +149,7 @@ function Home() {
         />
         <Separator />
         <ListItem
+          variant="regular"
           leftComponent={
             <Icon
               name="add-outline"
@@ -158,7 +160,7 @@ function Home() {
           }
           text="Add teammates"
           onPress={handleAddTeammatesPress}
-          style={{ marginBottom: theme.spacing.s }}
+          marginBottom="s"
         />
       </ScrollView>
       <FloatingNewMessageButton
