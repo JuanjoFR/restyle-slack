@@ -1,9 +1,23 @@
 import { useTheme } from "@shopify/restyle";
 import React from "react";
-import { Alert, Image, StyleSheet, View } from "react-native";
+import {
+  Alert,
+  Image,
+  StyleProp,
+  StyleSheet,
+  View,
+  ViewStyle
+} from "react-native";
+import type { Theme } from "../../libraries/theme";
 import ListItem from "../../style-system/list-item";
 import ListTitle from "../../style-system/list-title";
 import { getMessages } from "./data";
+
+type Props = {
+  style: StyleProp<ViewStyle>;
+  onMessagePress: (id: string) => void;
+  onAddMessagePress: () => void;
+};
 
 const hotMessages = getMessages();
 const styles = StyleSheet.create({
@@ -12,22 +26,14 @@ const styles = StyleSheet.create({
   }
 });
 
-/**
- * Renders the list of hot messages.
- *
- * @param {object} props Component properties.
- * @param {object} props.style Component style.
- * @param {Function} props.onMessagePress Executed when a message is pressed.
- * @param {Function} props.onAddMessagePress Executed when the add message button is pressed.
- * @returns {object} Component JSX.
- */
-function HotMessagesList({ style, onMessagePress, onAddMessagePress }) {
-  const theme = useTheme();
+function HotMessagesList({
+  style,
+  onMessagePress,
+  onAddMessagePress
+}: Props): JSX.Element {
+  const theme = useTheme<Theme>();
 
-  /**
-   * Toggle the list.
-   */
-  function handleTitlePress() {
+  function handleTitlePress(): void {
     Alert.alert("Handle title press");
   }
 
@@ -38,7 +44,7 @@ function HotMessagesList({ style, onMessagePress, onAddMessagePress }) {
         onAddPress={onAddMessagePress}
         onTitlePress={handleTitlePress}
       />
-      {hotMessages.map((message) => (
+      {hotMessages.map(message => (
         <ListItem
           variant="regular"
           key={message.id}
@@ -51,7 +57,7 @@ function HotMessagesList({ style, onMessagePress, onAddMessagePress }) {
             />
           }
           text={message.name}
-          onPress={() => onMessagePress(message.id)}
+          onPress={(): void => onMessagePress(message.id)}
         />
       ))}
     </View>

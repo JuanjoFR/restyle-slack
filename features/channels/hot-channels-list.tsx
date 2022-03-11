@@ -1,36 +1,35 @@
 import { useTheme } from "@shopify/restyle";
 import React from "react";
-import { Alert, View } from "react-native";
+import { Alert, StyleProp, View, ViewStyle } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import type { Theme } from "../../libraries/theme";
 import ListItem from "../../style-system/list-item";
 import ListTitle from "../../style-system/list-title";
 import { getChannels } from "./data";
 
+type Props = {
+  style: StyleProp<ViewStyle>;
+  onChannelPress: (id: string) => void;
+  onAddChannelPress: () => void;
+};
+
 const hotChannels = getChannels();
 
-/**
- * Renders the list of hot channels.
- *
- * @param {object} props Component properties.
- * @param {object} props.style Component style.
- * @param {Function} props.onChannelPress Executed when a channel is pressed.
- * @param {Function} props.onAddChannelPress Executed when the add channel item is pressed.
- * @returns {object} Component JSX.
- */
-function HotChannelsList({ style, onChannelPress, onAddChannelPress }) {
-  const theme = useTheme();
+function HotChannelsList({
+  style,
+  onChannelPress,
+  onAddChannelPress
+}: Props): JSX.Element {
+  const theme = useTheme<Theme>();
 
-  /**
-   * Toggle the list.
-   */
-  function handleTitlePress() {
+  function handleTitlePress(): void {
     Alert.alert("Handle title press");
   }
 
   return (
     <View style={style}>
       <ListTitle text="Channels" onTitlePress={handleTitlePress} />
-      {hotChannels.map((channel) => (
+      {hotChannels.map((channel: { id: string; name: string }) => (
         <ListItem
           variant="regular"
           key={channel.id}
@@ -43,7 +42,7 @@ function HotChannelsList({ style, onChannelPress, onAddChannelPress }) {
             />
           }
           text={channel.name}
-          onPress={() => onChannelPress(channel.id)}
+          onPress={(): void => onChannelPress(channel.id)}
         />
       ))}
       <ListItem
@@ -57,7 +56,7 @@ function HotChannelsList({ style, onChannelPress, onAddChannelPress }) {
           />
         }
         text="Add channel"
-        onPress={() => onAddChannelPress()}
+        onPress={(): void => onAddChannelPress()}
       />
     </View>
   );

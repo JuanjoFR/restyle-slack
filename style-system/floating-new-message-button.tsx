@@ -1,27 +1,25 @@
 import { useTheme } from "@shopify/restyle";
 import React from "react";
-import { Pressable, StyleSheet } from "react-native";
+import { Pressable, StyleProp, StyleSheet, ViewStyle } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import type { Theme } from "../libraries/theme";
 import Box from "./box";
+
+type Props = {
+  style: StyleProp<ViewStyle>;
+  onPress: () => void;
+};
 
 const styles = StyleSheet.create({
   icon: { top: -2, left: 1 }
 });
 
-/**
- * Renders an absolute positioned rounded button.
- *
- * @param {object} props Component properties.
- * @param {object} props.style Component container style.
- * @param {Function} props.onPress Function executed when the button is pressed.
- * @returns {object} Component JSX.
- */
-function FloatingNewMessageButton({ style, onPress }) {
-  const theme = useTheme();
+function FloatingNewMessageButton({ style, onPress }: Props): JSX.Element {
+  const theme = useTheme<Theme>();
 
   return (
     <Pressable onPress={onPress}>
-      {({ pressed }) => (
+      {({ pressed }): JSX.Element => (
         <Box
           position="absolute"
           backgroundColor="button"

@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/Ionicons";
 import HotChannelsList from "../features/channels/hot-channels-list";
 import HotMessagesList from "../features/messages/hot-messages-list";
+import type { Theme } from "../libraries/theme";
 import FloatingNewMessageButton from "../style-system/floating-new-message-button";
 import ListItem from "../style-system/list-item";
 import PressableTextInput from "../style-system/pressable-text-input";
@@ -25,71 +26,38 @@ const styles = StyleSheet.create({
   }
 });
 
-/**
- * Renders the home screen.
- *
- * @returns {object} Component JSX.
- */
-function Home() {
-  const theme = useTheme();
+function Home(): JSX.Element {
+  const theme = useTheme<Theme>();
 
-  /**
-   * Go to the shortcuts screen.
-   */
-  function handleShortcutsPress() {
+  function handleShortcutsPress(): void {
     Alert.alert("Go to shortcuts screen");
   }
 
-  /**
-   * Go to the threads screen.
-   */
-  function handleThreadsPress() {
+  function handleThreadsPress(): void {
     Alert.alert("Handle threads press");
   }
 
-  /**
-   * Go to the channel screen.
-   *
-   * @param {string} id Channel identifier.
-   */
-  function handleChannelPress(id) {
+  function handleChannelPress(id: string): void {
     Alert.alert(`Handle channel ${id} press`);
   }
 
-  /**
-   * Go to the new channel screen.
-   */
-  function handleAddChannelPress() {
+  function handleAddChannelPress(): void {
     Alert.alert("Handle add channel press");
   }
 
-  /**
-   * Go to the new teammates screen.
-   */
-  function handleAddTeammatesPress() {
+  function handleAddTeammatesPress(): void {
     Alert.alert("Handle add teammates press");
   }
 
-  /**
-   * Go to the message screen.
-   *
-   * @param {string} id Message identifier.
-   */
-  function handleMessagePress(id) {
+  function handleMessagePress(id: string): void {
     Alert.alert(`Handle message ${id} press`);
   }
 
-  /**
-   * Go to the new direct message screen.
-   */
-  function handleAddDirectMessagePress() {
+  function handleAddDirectMessagePress(): void {
     Alert.alert("Handle add direct message press");
   }
 
-  /**
-   * Go to the new message screen.
-   */
-  function handleNewMessagePress() {
+  function handleNewMessagePress(): void {
     Alert.alert("Go to new message screen");
   }
 
@@ -132,7 +100,7 @@ function Home() {
             />
           }
           text="Threads"
-          onPress={() => handleThreadsPress()}
+          onPress={(): void => handleThreadsPress()}
           marginBottom="s"
         />
         <Separator />

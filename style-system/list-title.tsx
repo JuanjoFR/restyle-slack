@@ -2,8 +2,15 @@ import { useTheme } from "@shopify/restyle";
 import React from "react";
 import { Pressable, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import type { Theme } from "../libraries/theme";
 import Box from "./box";
 import Text from "./text";
+
+type Props = {
+  text: string;
+  onTitlePress: () => void;
+  onAddPress?: () => void;
+};
 
 const styles = StyleSheet.create({
   textPressable: { flex: 1 },
@@ -11,17 +18,8 @@ const styles = StyleSheet.create({
   iconPressed: { opacity: 0.4 }
 });
 
-/**
- * Renders a list title with a chevron icon on right.
- *
- * @param {object} props Component properties.
- * @param {string} props.text Title text.
- * @param {Function} props.onTitlePress Function executed when the title is pressed.
- * @param {Function} props.onAddPress Function executed when the "add" icon is pressed.
- * @returns {object} Component JSX.
- */
-function ListTitle({ text, onTitlePress, onAddPress }) {
-  const theme = useTheme();
+function ListTitle({ text, onTitlePress, onAddPress }: Props): JSX.Element {
+  const theme = useTheme<Theme>();
 
   return (
     <Box
@@ -30,7 +28,7 @@ function ListTitle({ text, onTitlePress, onAddPress }) {
       // backgroundColor="cardPrimaryBackground"
     >
       <Pressable onPress={onTitlePress} style={styles.textPressable}>
-        {({ pressed }) => (
+        {({ pressed }): JSX.Element => (
           <Box
             paddingTop="s"
             paddingBottom="m"
@@ -45,7 +43,7 @@ function ListTitle({ text, onTitlePress, onAddPress }) {
       </Pressable>
       {onAddPress ? (
         <Pressable onPress={onAddPress}>
-          {({ pressed }) => (
+          {({ pressed }): JSX.Element => (
             <Box paddingTop="s" paddingBottom="m" paddingHorizontal="s">
               <Icon
                 name="add-outline"
@@ -58,7 +56,7 @@ function ListTitle({ text, onTitlePress, onAddPress }) {
         </Pressable>
       ) : undefined}
       <Pressable onPress={onTitlePress}>
-        {({ pressed }) => (
+        {({ pressed }): JSX.Element => (
           <Box
             paddingTop="s"
             paddingBottom="m"

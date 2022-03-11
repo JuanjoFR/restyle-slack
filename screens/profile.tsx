@@ -2,6 +2,7 @@ import { useTheme } from "@shopify/restyle";
 import React from "react";
 import { ScrollView, StatusBar, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import type { Theme } from "../libraries/theme";
 import Text from "../style-system/text";
 
 const styles = StyleSheet.create({
@@ -10,13 +11,8 @@ const styles = StyleSheet.create({
   }
 });
 
-/**
- * Renders the mentions screen.
- *
- * @returns {object} Component JSX.
- */
-function Mentions() {
-  const theme = useTheme();
+function Profile(): JSX.Element {
+  const theme = useTheme<Theme>();
 
   return (
     <SafeAreaView
@@ -30,10 +26,10 @@ function Mentions() {
     >
       <StatusBar barStyle="light-content" />
       <ScrollView>
-        <Text variant="header">Mentions</Text>
+        <Text variant="header">Profile</Text>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-export default Mentions;
+export default Profile;

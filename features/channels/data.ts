@@ -4,12 +4,12 @@ import {
   randomIntFromInterval
 } from "../../libraries/utils";
 
-/**
- * Generates an array of random channels.
- *
- * @returns {Array} Random channels.
- */
-export function getChannels() {
+type Props = Array<{
+  id: string;
+  name: string;
+}>;
+
+export function getChannels(): Props {
   const numberItems = randomIntFromInterval(1, 10);
   const channels = [];
 

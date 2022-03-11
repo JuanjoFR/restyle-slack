@@ -3,6 +3,7 @@ import React from "react";
 import { Alert, ScrollView, StatusBar, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/Ionicons";
+import type { Theme } from "../libraries/theme";
 import Box from "../style-system/box";
 import FloatingNewMessageButton from "../style-system/floating-new-message-button";
 import ListItem from "../style-system/list-item";
@@ -24,32 +25,18 @@ const styles = StyleSheet.create({
   addTeammatesIcon: { padding: 10 }
 });
 
-/**
- * Renders the messages screen.
- *
- * @returns {object} Component JSX.
- */
-function Messages() {
-  const theme = useTheme();
+function Messages(): JSX.Element {
+  const theme = useTheme<Theme>();
 
-  /**
-   * Go to the shortcuts screen.
-   */
-  function handleShortcutsPress() {
+  function handleShortcutsPress(): void {
     Alert.alert("Go to shortcuts screen");
   }
 
-  /**
-   * Go to the new teammates screen.
-   */
-  function handleAddTeammatesPress() {
+  function handleAddTeammatesPress(): void {
     Alert.alert("Go to new teammates screen");
   }
 
-  /**
-   * Go to the new message screen.
-   */
-  function handleNewMessagePress() {
+  function handleNewMessagePress(): void {
     Alert.alert("Go to new message screen");
   }
 
@@ -96,7 +83,7 @@ function Messages() {
             </Box>
           }
           text="Add teammates"
-          onPress={() => handleAddTeammatesPress()}
+          onPress={(): void => handleAddTeammatesPress()}
         />
       </ScrollView>
       <FloatingNewMessageButton

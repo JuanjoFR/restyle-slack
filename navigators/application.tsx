@@ -1,7 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { HeaderTitleProps } from "@react-navigation/elements";
 import { useTheme } from "@shopify/restyle";
 import React from "react";
 import Icon from "react-native-vector-icons/Ionicons";
+import type { Theme } from "../libraries/theme";
 import HomeScreen from "../screens/home";
 import MentionsScreen from "../screens/mentions";
 import MessagesScreen from "../screens/messages";
@@ -9,19 +11,22 @@ import ProfileScreen from "../screens/profile";
 import SearchScreen from "../screens/search";
 import Text from "../style-system/text";
 
+type TabBarIconProps = {
+  focused: boolean;
+  color: string;
+  size: number;
+};
+
 const Tab = createBottomTabNavigator();
 
-/**
- * Renders an icon component for a bottom tab.
- *
- * @param {object} props Component properties.
- * @param {string} props.icon Tab icon name.
- * @param {boolean} props.focused Indicates if the icon is selected or not.
- * @param {string} props.color Icon tint color.
- * @param {number} props.size Icon size
- * @returns {object} Component JSX.
- */
-function TabBarIcon({ icon, focused, color, size }) {
+function TabBarIcon({
+  icon,
+  focused,
+  color,
+  size
+}: TabBarIconProps & {
+  icon: string;
+}): JSX.Element {
   return (
     <Icon
       name={`${icon}${focused ? "" : "-outline"}`}
@@ -31,79 +36,32 @@ function TabBarIcon({ icon, focused, color, size }) {
   );
 }
 
-/**
- * Renders the home bottom tab bar icon.
- *
- * @param {object} props Component properties.
- * @returns {object} Component JSX.
- */
-function HomeTabBarIcon(props) {
+function HomeTabBarIcon(props: TabBarIconProps): JSX.Element {
   return <TabBarIcon icon="home" {...props} />;
 }
 
-/**
- * Renders the messages bottom tab bar icon.
- *
- * @param {object} props Component properties.
- * @returns {object} Component JSX.
- */
-function MessagesTabBarIcon(props) {
+function MessagesTabBarIcon(props: TabBarIconProps): JSX.Element {
   return <TabBarIcon icon="chatbubbles" {...props} />;
 }
 
-/**
- * Renders the mentions bottom tab bar icon.
- *
- * @param {object} props Component properties.
- * @returns {object} Component JSX.
- */
-function MentionsTabBarIcon(props) {
+function MentionsTabBarIcon(props: TabBarIconProps): JSX.Element {
   return <TabBarIcon icon="at" {...props} />;
 }
 
-/**
- * Renders the search bottom tab bar icon.
- *
- * @param {object} props Component properties.
- * @returns {object} Component JSX.
- */
-function SearchTabBarIcon(props) {
+function SearchTabBarIcon(props: TabBarIconProps): JSX.Element {
   return <TabBarIcon icon="search" {...props} />;
 }
 
-/**
- * Renders the profile bottom tab bar icon.
- *
- * @param {object} props Component properties.
- * @returns {object} Component JSX.
- */
-function ProfileTabBarIcon(props) {
+function ProfileTabBarIcon(props: TabBarIconProps): JSX.Element {
   return <TabBarIcon icon="person-circle" {...props} />;
 }
 
-/**
- * Renders the navigator header text.
- *
- * @param {object} props Component properties.
- * @param {string} props.children Header text.
- * @param {object} props.rest Rest of component properties.
- * @returns {object} Component JSX.
- */
-function HeaderTitle({ children, ...rest }) {
-  return (
-    <Text variant="screenHeader" {...rest}>
-      {children}
-    </Text>
-  );
+function HeaderTitle({ children }: HeaderTitleProps): JSX.Element {
+  return <Text variant="screenHeader">{children}</Text>;
 }
 
-/**
- * Renders the application bottom tab navigator.
- *
- * @returns {object} Component JSX.
- */
-function Application() {
-  const theme = useTheme();
+function Application(): JSX.Element {
+  const theme = useTheme<Theme>();
 
   return (
     <Tab.Navigator
