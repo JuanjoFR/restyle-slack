@@ -88,6 +88,13 @@ const theme = createTheme({
       fontSize: 16,
       lineHeight: 24,
       color: "boldText"
+    },
+    emptyContentLabel: {
+      fontFamily: "System",
+      fontWeight: "600",
+      fontSize: 19,
+      lineHeight: 24,
+      color: "mainForeground"
     }
   }
 });
