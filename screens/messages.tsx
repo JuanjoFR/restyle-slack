@@ -13,15 +13,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  shortcutsPressable: {
-    zIndex: 1
-  },
-  containerShortcuts: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0
-  },
   addTeammatesIcon: { padding: 10 }
 });
 
@@ -53,14 +44,14 @@ function Messages(): JSX.Element {
       <StatusBar barStyle="light-content" />
       <PressableTextInput
         text="Jump to..."
-        pressableStyle={styles.shortcutsPressable}
-        containerStyle={[
-          styles.containerShortcuts,
-          {
-            marginTop: theme.spacing.m,
-            marginHorizontal: theme.spacing.m
-          }
-        ]}
+        backgroundColor="inputBackground"
+        position="absolute"
+        top={0}
+        left={0}
+        right={0}
+        zIndex={1}
+        marginTop="m"
+        marginHorizontal="m"
         onPress={handleShortcutsPress}
       />
       <ScrollView
@@ -87,7 +78,8 @@ function Messages(): JSX.Element {
         />
       </ScrollView>
       <FloatingNewMessageButton
-        style={{ bottom: theme.spacing.m, right: theme.spacing.m }}
+        bottom={theme.spacing.m}
+        right={theme.spacing.m}
         onPress={handleNewMessagePress}
       />
     </SafeAreaView>

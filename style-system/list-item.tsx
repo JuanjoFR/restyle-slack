@@ -1,10 +1,4 @@
-import {
-  BoxProps,
-  ColorProps,
-  spacing,
-  useRestyle,
-  useTheme
-} from "@shopify/restyle";
+import { BoxProps, spacing, useRestyle, useTheme } from "@shopify/restyle";
 import React from "react";
 import { Pressable } from "react-native";
 import type { Theme } from "../libraries/theme";
@@ -30,16 +24,16 @@ function ListItem({
   const theme = useTheme<Theme>();
   const props = useRestyle(restyleFunctions, rest);
 
-  function getIconColor(): ColorProps<Theme> {
-    switch (variant) {
-      case "regular": {
-        return "icon";
-      }
-      case "bold": {
-        return "iconBold";
-      }
-    }
-  }
+  // function getIconColor(): ColorProps<Theme> {
+  //   switch (variant) {
+  //     case "regular": {
+  //       return "icon";
+  //     }
+  //     case "bold": {
+  //       return "iconBold";
+  //     }
+  //   }
+  // }
 
   function getTextVariant(): "body" | "boldBody" {
     switch (variant) {
@@ -75,7 +69,7 @@ function ListItem({
           marginHorizontal="s"
           paddingHorizontal="s"
           borderRadius={theme.spacing.s}
-          color={getIconColor()}
+          // color={getIconColor()}
           backgroundColor={pressed ? getPressedBackgroundColor() : undefined}
           {...props}
         >

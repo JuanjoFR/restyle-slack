@@ -8,6 +8,7 @@ const palette = {
   greenLight: "#56DCBA",
   greenPrimary: "#0ECD9D",
   greenDark: "#0A906E",
+  pinkGray: "#98859A",
 
   primary: "#350D37",
   black: "#000",
@@ -30,6 +31,7 @@ const theme = createTheme({
     buttonPrimaryBackground: palette.purplePrimary,
     tabBarActiveTint: palette.black,
     tabBarInactiveTint: palette.gray3,
+    inputBackground: palette.white,
     inputBorder: palette.gray1,
     listItemPressRegular: palette.gray1,
     listItemPressBold: palette.gray5,
@@ -38,7 +40,8 @@ const theme = createTheme({
     separator: palette.gray1,
     iconBackground: palette.gray1,
     icon: palette.gray4,
-    iconBold: palette.greenLight
+    iconBold: palette.greenLight,
+    leadButtonActiveBackground: palette.pinkGray
   },
   spacing: {
     s: 8,

@@ -1,39 +1,35 @@
+import { BoxProps } from "@shopify/restyle";
 import React from "react";
-import { Pressable, StyleProp, ViewStyle } from "react-native";
+import { Pressable } from "react-native";
+import type { Theme } from "../libraries/theme";
 import Box from "./box";
 import Text from "./text";
 
 type Props = {
   text: string;
-  pressableStyle: StyleProp<ViewStyle>;
-  containerStyle: StyleProp<ViewStyle>;
   onPress: () => void;
-};
+} & BoxProps<Theme>;
 
-function PressableTextInput({
-  text,
-  pressableStyle,
-  containerStyle,
-  onPress
-}: Props): JSX.Element {
+function PressableTextInput({ text, onPress, ...rest }: Props): JSX.Element {
   return (
-    <Pressable onPress={onPress} style={pressableStyle}>
-      {({ pressed }): JSX.Element => (
-        <Box
-          paddingHorizontal="m"
-          paddingVertical="s"
-          borderWidth={1}
-          borderColor="inputBorder"
-          borderRadius={8}
-          style={containerStyle}
-          backgroundColor={pressed ? "inputPress" : "mainBackground"}
-        >
-          <Text variant="body" color="placeholderText">
-            {text}
-          </Text>
-        </Box>
-      )}
-    </Pressable>
+    <Box {...rest}>
+      <Pressable onPress={onPress}>
+        {({ pressed }): JSX.Element => (
+          <Box
+            backgroundColor={pressed ? "inputBorder" : undefined}
+            borderWidth={1}
+            borderColor="inputBorder"
+            borderRadius={8}
+            paddingHorizontal="m"
+            paddingVertical="s"
+          >
+            <Text variant="body" color="placeholderText">
+              {text}
+            </Text>
+          </Box>
+        )}
+      </Pressable>
+    </Box>
   );
 }
 
