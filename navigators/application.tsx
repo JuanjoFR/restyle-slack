@@ -1,8 +1,12 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  BottomTabHeaderProps,
+  createBottomTabNavigator
+} from "@react-navigation/bottom-tabs";
 import { HeaderTitleProps } from "@react-navigation/elements";
 import { useTheme } from "@shopify/restyle";
 import React from "react";
 import Icon from "react-native-vector-icons/Ionicons";
+import SearchForm from "../features/search/form";
 import type { Theme } from "../libraries/theme";
 import HomeScreen from "../screens/home";
 import MentionsScreen from "../screens/mentions";
@@ -106,7 +110,7 @@ function Application(): JSX.Element {
         name="search"
         component={SearchScreen}
         options={{
-          title: "Search",
+          header: (props): BottomTabHeaderProps => <SearchForm {...props} />,
           tabBarIcon: SearchTabBarIcon,
           tabBarLabel: "Search"
         }}

@@ -2,8 +2,10 @@ import { createTheme } from "@shopify/restyle";
 
 const palette = {
   purpleLight: "#8C6FF7",
+  purpleLight2: "#4E2C4F",
   purplePrimary: "#5A31F4",
   purpleDark: "#3F22AB",
+  purpleGray: "#CAC0CC",
 
   greenLight: "#56DCBA",
   greenPrimary: "#0ECD9D",
@@ -17,7 +19,8 @@ const palette = {
   gray2: "#606060",
   gray3: "#868686",
   gray4: "#616061",
-  gray5: "#F8F8F8"
+  gray5: "#F8F8F8",
+  gray6: "#1c1c1c"
 };
 const theme = createTheme({
   colors: {
@@ -33,15 +36,19 @@ const theme = createTheme({
     tabBarInactiveTint: palette.gray3,
     inputBackground: palette.white,
     inputBorder: palette.gray1,
+    headerInputBackground: palette.purpleLight2,
     listItemPressRegular: palette.gray1,
     listItemPressBold: palette.gray5,
     inputPress: palette.gray1,
     placeholderText: palette.gray2,
+    headerPlaceholderText: palette.purpleGray,
+    headerInputText: palette.white,
     separator: palette.gray1,
     iconBackground: palette.gray1,
     icon: palette.gray4,
     iconBold: palette.greenLight,
-    leadButtonActiveBackground: palette.pinkGray
+    leadButtonActiveBackground: palette.pinkGray,
+    listItemBoldForeground: palette.gray6
   },
   spacing: {
     s: 8,
