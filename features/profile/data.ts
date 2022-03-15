@@ -10,7 +10,7 @@ export function getStatus(): {
     name: faker.name.findName(),
     avatarSource: [
       {
-        uri: faker.image.avatar()
+        uri: faker.image.avatar().replace("http://", "https://")
       }
     ],
     currentStatus: "Away"

@@ -19,7 +19,7 @@ export function getMessages(): Props {
     const uri = faker.image.avatar().replace("http://", "https://");
 
     messages.push({
-      id: (i + 1).toString(),
+      id: faker.datatype.uuid(),
       avatarSource: [
         {
           uri,

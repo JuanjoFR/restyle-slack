@@ -17,7 +17,7 @@ export function getChannels(): Props {
     const numberWords = randomIntFromInterval(1, 3);
 
     channels.push({
-      id: (i + 1).toString(),
+      id: faker.datatype.uuid(),
       name: capitalizeFirstLetter(faker.random.words(numberWords))
     });
   }

@@ -88,7 +88,6 @@ function Form(props: BottomTabHeaderProps): JSX.Element {
             style={[
               styles.input,
               {
-                // ...theme.textVariants.body,
                 fontFamily: theme.textVariants.body.fontFamily,
                 fontSize: theme.textVariants.body.fontSize,
                 color: theme.colors.headerInputText,

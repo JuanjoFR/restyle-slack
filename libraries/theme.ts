@@ -48,7 +48,8 @@ const theme = createTheme({
     icon: palette.gray4,
     iconBold: palette.greenLight,
     leadButtonActiveBackground: palette.pinkGray,
-    listItemBoldForeground: palette.gray6
+    listItemBoldForeground: palette.gray6,
+    headerButtonBackground: palette.purpleLight2
   },
   spacing: {
     s: 8,
