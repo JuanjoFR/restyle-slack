@@ -1,22 +1,24 @@
-import { useTheme } from "@shopify/restyle";
+import { BoxProps, useTheme } from "@shopify/restyle";
 import React from "react";
 import Icon from "react-native-vector-icons/Ionicons";
 import type { Theme } from "../../libraries/theme";
+import Box from "../../style-system/box";
 import ListItemWithArrow from "../../style-system/list-item-with-arrow";
 
 type Props = {
   onBrowsePeoplePress: () => void;
   onBrowseChannelsPress: () => void;
-};
+} & BoxProps<Theme>;
 
 function Search({
   onBrowsePeoplePress,
-  onBrowseChannelsPress
+  onBrowseChannelsPress,
+  ...rest
 }: Props): JSX.Element {
   const theme = useTheme<Theme>();
 
   return (
-    <React.Fragment>
+    <Box {...rest}>
       <ListItemWithArrow
         leftComponent={
           <Icon
@@ -28,7 +30,6 @@ function Search({
         }
         text="Browse People"
         onPress={onBrowsePeoplePress}
-        marginTop="s"
         marginHorizontal="s"
       />
       <ListItemWithArrow
@@ -42,10 +43,9 @@ function Search({
         }
         text="Browse Channels"
         onPress={onBrowseChannelsPress}
-        marginBottom="s"
         marginHorizontal="s"
       />
-    </React.Fragment>
+    </Box>
   );
 }
 

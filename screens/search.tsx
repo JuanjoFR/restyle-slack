@@ -53,6 +53,7 @@ function Search(): JSX.Element {
       <StatusBar barStyle="light-content" />
       <ScrollView>
         <Menu
+          marginVertical="s"
           onBrowsePeoplePress={handleBrowsePeoplePress}
           onBrowseChannelsPress={handleBrowseChannelsPress}
         />
