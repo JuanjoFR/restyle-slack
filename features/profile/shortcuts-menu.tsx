@@ -6,13 +6,13 @@ import Box from "../../style-system/box";
 import ListItemWithArrow from "../../style-system/list-item-with-arrow";
 
 type Props = {
-  onBrowsePeoplePress: () => void;
-  onBrowseChannelsPress: () => void;
+  onPauseNotificationsPress: () => void;
+  onSetActivePress: () => void;
 } & BoxProps<Theme>;
 
-function Search({
-  onBrowsePeoplePress,
-  onBrowseChannelsPress,
+function ShortcutsMenu({
+  onPauseNotificationsPress,
+  onSetActivePress,
   ...rest
 }: Props): JSX.Element {
   const theme = useTheme<Theme>();
@@ -22,33 +22,33 @@ function Search({
       <ListItemWithArrow
         leftComponent={
           <Icon
-            name="people-outline"
+            name="notifications-off-outline"
             size={20}
             color={theme.colors.text}
             style={{ marginRight: theme.spacing.m }}
           />
         }
-        text="Browse People"
-        onPress={onBrowsePeoplePress}
+        text="Pause notifications"
+        onPress={onPauseNotificationsPress}
         marginHorizontal="s"
-        showChevron={true}
+        showChevron={false}
       />
       <ListItemWithArrow
         leftComponent={
           <Icon
-            name="code-outline"
+            name="person-circle-outline"
             size={20}
             color={theme.colors.listItemBoldForeground}
             style={{ marginRight: theme.spacing.m }}
           />
         }
-        text="Browse Channels"
-        onPress={onBrowseChannelsPress}
+        text="Set yourself as active"
+        onPress={onSetActivePress}
         marginHorizontal="s"
-        showChevron={true}
+        showChevron={false}
       />
     </Box>
   );
 }
 
-export default Search;
+export default ShortcutsMenu;

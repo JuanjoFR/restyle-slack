@@ -11,12 +11,14 @@ const restyleFunctions = [spacing];
 type Props = {
   leftComponent: JSX.Element;
   text: string;
+  showChevron: boolean;
   onPress: () => void;
 } & BoxProps<Theme>;
 
 function ListItemWithArrow({
   leftComponent,
   text,
+  showChevron,
   onPress,
   ...rest
 }: Props): JSX.Element {
@@ -42,13 +44,15 @@ function ListItemWithArrow({
             </Text>
           </Box>
 
-          <Box>
-            <Icon
-              name="chevron-forward-outline"
-              size={22}
-              color={theme.colors.listItemBoldForeground}
-            />
-          </Box>
+          {showChevron ? (
+            <Box>
+              <Icon
+                name="chevron-forward-outline"
+                size={22}
+                color={theme.colors.listItemBoldForeground}
+              />
+            </Box>
+          ) : undefined}
         </Box>
       )}
     </Pressable>
