@@ -8,6 +8,7 @@ import Text from "./text";
 
 type Props = {
   text: string;
+  isClosed: boolean;
   onTitlePress: () => void;
   onAddPress?: () => void;
 };
@@ -18,7 +19,12 @@ const styles = StyleSheet.create({
   iconPressed: { opacity: 0.4 }
 });
 
-function ListTitle({ text, onTitlePress, onAddPress }: Props): JSX.Element {
+function ListTitle({
+  text,
+  isClosed,
+  onTitlePress,
+  onAddPress
+}: Props): JSX.Element {
   const theme = useTheme<Theme>();
 
   return (
@@ -67,7 +73,12 @@ function ListTitle({ text, onTitlePress, onAddPress }: Props): JSX.Element {
               name="chevron-up-outline"
               size={20}
               color={theme.colors.text}
-              style={pressed ? styles.iconPressed : styles.iconUnpressed}
+              style={[
+                pressed ? styles.iconPressed : styles.iconUnpressed,
+                {
+                  transform: [{ rotateZ: isClosed ? "180deg" : "0deg" }]
+                }
+              ]}
             />
           </Box>
         )}

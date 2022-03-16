@@ -19,6 +19,10 @@ const styles = StyleSheet.create({
 
 function Home(): JSX.Element {
   const theme = useTheme<Theme>();
+  const [isHotChannelsListClosed, setIsHotChannelsListClosed] =
+    React.useState(false);
+  const [isHotMessagesListClosed, setIsHotMessagesListClosed] =
+    React.useState(false);
 
   function handleShortcutsPress(): void {
     Alert.alert("Go to shortcuts screen");
@@ -26,6 +30,10 @@ function Home(): JSX.Element {
 
   function handleThreadsPress(): void {
     Alert.alert("Handle threads press");
+  }
+
+  function handleChannelTitlePress(): void {
+    setIsHotChannelsListClosed(!isHotChannelsListClosed);
   }
 
   function handleChannelPress(id: string): void {
@@ -38,6 +46,10 @@ function Home(): JSX.Element {
 
   function handleAddTeammatesPress(): void {
     Alert.alert("Handle add teammates press");
+  }
+
+  function handleMessageTitlePress(): void {
+    setIsHotMessagesListClosed(!isHotMessagesListClosed);
   }
 
   function handleMessagePress(id: string): void {
@@ -96,12 +108,16 @@ function Home(): JSX.Element {
         />
         <Separator />
         <HotChannelsList
+          isClosed={isHotChannelsListClosed}
+          onTitlePress={handleChannelTitlePress}
           onChannelPress={handleChannelPress}
           onAddChannelPress={handleAddChannelPress}
           style={{ marginBottom: theme.spacing.s }}
         />
         <Separator />
         <HotMessagesList
+          isClosed={isHotMessagesListClosed}
+          onTitlePress={handleMessageTitlePress}
           onMessagePress={handleMessagePress}
           onAddMessagePress={handleAddDirectMessagePress}
           style={{ marginBottom: theme.spacing.s }}
