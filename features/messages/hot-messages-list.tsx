@@ -1,41 +1,56 @@
 import { useTheme } from "@shopify/restyle";
 import React from "react";
 import { Image, StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming
+} from "react-native-reanimated";
 import type { Theme } from "../../libraries/theme";
-import Box from "../../style-system/box";
 import ListItem from "../../style-system/list-item";
 import ListTitle from "../../style-system/list-title";
 import { getMessages } from "./data";
 
 type Props = {
-  isClosed: boolean;
   style: StyleProp<ViewStyle>;
-  onTitlePress: () => void;
   onMessagePress: (id: string) => void;
   onAddMessagePress: () => void;
 };
 
 const hotMessages = getMessages();
 const LIST_ITEM_HEIGHT = 40;
+const HEIGHT_MIN = 0;
+const HEIGHT_MAX = (hotMessages.length + 1) * LIST_ITEM_HEIGHT;
 const styles = StyleSheet.create({
   bodyContainer: {
     overflow: "hidden"
   },
-  bodyContainerOpen: { height: hotMessages.length * LIST_ITEM_HEIGHT },
-  bodyContainerClose: { height: 0 },
   avatar: {
     borderRadius: 4
   }
 });
 
 function HotMessagesList({
-  isClosed,
   style,
-  onTitlePress,
   onMessagePress,
   onAddMessagePress
 }: Props): JSX.Element {
   const theme = useTheme<Theme>();
+  const [isClosed, setIsClosed] = React.useState(false);
+  const height = useSharedValue(HEIGHT_MAX);
+  const animatedStyles = useAnimatedStyle(() => ({
+    height: withTiming(height.value, {
+      duration: 200
+    })
+  }));
+
+  function handleTitlePress(): void {
+    setIsClosed(!isClosed);
+  }
+
+  React.useEffect(() => {
+    height.value = isClosed ? HEIGHT_MIN : HEIGHT_MAX;
+  }, [height, isClosed]);
 
   return (
     <View style={style}>
@@ -43,14 +58,9 @@ function HotMessagesList({
         text="Direct messages"
         isClosed={isClosed}
         onAddPress={onAddMessagePress}
-        onTitlePress={onTitlePress}
+        onTitlePress={handleTitlePress}
       />
-      <Box
-        style={[
-          styles.bodyContainer,
-          isClosed ? styles.bodyContainerClose : styles.bodyContainerOpen
-        ]}
-      >
+      <Animated.View style={[styles.bodyContainer, animatedStyles]}>
         {hotMessages.map(message => (
           <ListItem
             variant="regular"
@@ -67,7 +77,7 @@ function HotMessagesList({
             onPress={(): void => onMessagePress(message.id)}
           />
         ))}
-      </Box>
+      </Animated.View>
     </View>
   );
 }

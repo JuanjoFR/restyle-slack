@@ -1,6 +1,11 @@
 import { useTheme } from "@shopify/restyle";
 import React from "react";
 import { Pressable, StyleSheet } from "react-native";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming
+} from "react-native-reanimated";
 import Icon from "react-native-vector-icons/Ionicons";
 import type { Theme } from "../libraries/theme";
 import Box from "./box";
@@ -26,6 +31,16 @@ function ListTitle({
   onAddPress
 }: Props): JSX.Element {
   const theme = useTheme<Theme>();
+  const rotate = useSharedValue("0deg");
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      transform: [{ rotateZ: withTiming(rotate.value, { duration: 200 }) }]
+    };
+  });
+
+  React.useEffect(() => {
+    rotate.value = isClosed ? "90deg" : "0deg";
+  }, [isClosed, rotate]);
 
   return (
     <Box
@@ -69,17 +84,14 @@ function ListTitle({
             paddingLeft="s"
             paddingRight="m"
           >
-            <Icon
-              name="chevron-up-outline"
-              size={20}
-              color={theme.colors.text}
-              style={[
-                pressed ? styles.iconPressed : styles.iconUnpressed,
-                {
-                  transform: [{ rotateZ: isClosed ? "180deg" : "0deg" }]
-                }
-              ]}
-            />
+            <Animated.View style={animatedStyles}>
+              <Icon
+                name="chevron-up-outline"
+                size={20}
+                color={theme.colors.text}
+                style={[pressed ? styles.iconPressed : styles.iconUnpressed]}
+              />
+            </Animated.View>
           </Box>
         )}
       </Pressable>
