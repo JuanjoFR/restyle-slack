@@ -20,7 +20,7 @@ type Props = {
 const hotMessages = getMessages();
 const LIST_ITEM_HEIGHT = 40;
 const HEIGHT_MIN = 0;
-const HEIGHT_MAX = (hotMessages.length + 1) * LIST_ITEM_HEIGHT;
+const HEIGHT_MAX = hotMessages.length * LIST_ITEM_HEIGHT;
 const styles = StyleSheet.create({
   bodyContainer: {
     overflow: "hidden"

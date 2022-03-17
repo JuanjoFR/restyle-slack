@@ -18,7 +18,6 @@ function HeaderSortButton({ onPress }: Props): JSX.Element {
       {({ pressed }): JSX.Element => (
         <Box
           padding="s"
-          marginBottom="s"
           borderRadius={50}
           backgroundColor="headerButtonBackground"
           opacity={pressed ? 0.6 : 1}

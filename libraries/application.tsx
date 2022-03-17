@@ -14,13 +14,13 @@ const styles = StyleSheet.create({
 function Application(): JSX.Element {
   return (
     <ThemeProvider theme={theme}>
-      <SafeAreaProvider>
-        <GestureHandlerRootView style={styles.gestureHandlerRootView}>
+      <GestureHandlerRootView style={styles.gestureHandlerRootView}>
+        <SafeAreaProvider>
           <NavigationContainer>
             <ApplicationNavigator />
           </NavigationContainer>
-        </GestureHandlerRootView>
-      </SafeAreaProvider>
+        </SafeAreaProvider>
+      </GestureHandlerRootView>
     </ThemeProvider>
   );
 }

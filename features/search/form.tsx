@@ -8,7 +8,7 @@ import type {
   UseFormStateReturn
 } from "react-hook-form";
 import { Controller, useForm } from "react-hook-form";
-import { StyleSheet, TextInput } from "react-native";
+import { Platform, StyleSheet, TextInput } from "react-native";
 import {
   useSafeAreaFrame,
   useSafeAreaInsets
@@ -18,10 +18,10 @@ import type { Theme } from "../../libraries/theme";
 import Box from "../../style-system/box";
 
 const styles = StyleSheet.create({
+  icon: { top: 1 },
   input: {
-    lineHeight: 20,
     flex: 1,
-    borderRadius: 8
+    top: 1
   }
 });
 
@@ -41,7 +41,6 @@ function Form(props: BottomTabHeaderProps): JSX.Element {
       height={headerHeight}
       flexDirection="row"
       paddingHorizontal="m"
-      paddingBottom="s"
       style={[
         props.options.headerStyle,
         {
@@ -50,56 +49,56 @@ function Form(props: BottomTabHeaderProps): JSX.Element {
       ]}
     >
       <Box
-        pointerEvents="none"
-        position="absolute"
-        zIndex={1}
-        style={{
-          bottom: theme.spacing.s + 7,
-          left: theme.spacing.m * 2
-        }}
+        flex={1}
+        flexDirection="row"
+        alignItems="center"
+        borderRadius={8}
+        paddingHorizontal="m"
+        backgroundColor="headerInputBackground"
+        marginBottom="s"
+        marginTop={Platform.OS === "android" ? "s" : undefined}
       >
         <Icon
           name="search-outline"
           size={18}
           color={theme.colors.headerPlaceholderText}
+          style={[styles.icon, { marginRight: theme.spacing.s }]}
+        />
+        <Controller
+          control={control}
+          name="search"
+          render={({
+            field: { onChange, onBlur, value }
+          }: {
+            field: ControllerRenderProps<
+              {
+                search: string;
+              },
+              "search"
+            >;
+            fieldState: ControllerFieldState;
+            formState: UseFormStateReturn<{
+              search: string;
+            }>;
+          }): JSX.Element => (
+            <TextInput
+              placeholder="Enter a search term"
+              placeholderTextColor={theme.colors.headerPlaceholderText}
+              value={value}
+              style={[
+                styles.input,
+                {
+                  fontFamily: theme.textVariants.body.fontFamily,
+                  fontSize: theme.textVariants.body.fontSize,
+                  color: theme.colors.headerInputText
+                }
+              ]}
+              onBlur={onBlur}
+              onChangeText={onChange}
+            />
+          )}
         />
       </Box>
-      <Controller
-        control={control}
-        name="search"
-        render={({
-          field: { onChange, onBlur, value }
-        }: {
-          field: ControllerRenderProps<
-            {
-              search: string;
-            },
-            "search"
-          >;
-          fieldState: ControllerFieldState;
-          formState: UseFormStateReturn<{
-            search: string;
-          }>;
-        }): JSX.Element => (
-          <TextInput
-            placeholder="Enter a search term"
-            placeholderTextColor={theme.colors.headerPlaceholderText}
-            value={value}
-            style={[
-              styles.input,
-              {
-                fontFamily: theme.textVariants.body.fontFamily,
-                fontSize: theme.textVariants.body.fontSize,
-                color: theme.colors.headerInputText,
-                backgroundColor: theme.colors.headerInputBackground,
-                paddingLeft: 25 + theme.spacing.s * 2
-              }
-            ]}
-            onBlur={onBlur}
-            onChangeText={onChange}
-          />
-        )}
-      />
     </Box>
   );
 }

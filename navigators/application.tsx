@@ -69,11 +69,7 @@ function ProfileTabBarIcon(props: TabBarIconProps): JSX.Element {
 }
 
 function HeaderTitle({ children }: HeaderTitleProps): JSX.Element {
-  return (
-    <Text variant="screenHeader" marginBottom="s">
-      {children}
-    </Text>
-  );
+  return <Text variant="screenHeader">{children}</Text>;
 }
 
 function Application(): JSX.Element {
