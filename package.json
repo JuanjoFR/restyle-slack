@@ -1,7 +1,23 @@
 {
   "name": "restyle-slack",
+  "description": "Slack application clone",
+  "keywords": [
+    "react-native",
+    "typescript",
+    "application",
+    "ios",
+    "android",
+    "restyle",
+    "slack",
+    "reanimated",
+    "react-native-gesture-handler"
+  ],
   "version": "0.0.1",
-  "private": true,
+  "author": {
+    "name": "Juanjo Fernandez",
+    "email": "juanjo.fernandez@haa.st",
+    "url": "https://haa.st"
+  },
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
